@@ -16,6 +16,9 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://esri.bintray.com/arcgis'
+        }
     }
 }
 
@@ -24,11 +27,20 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 28
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+
+    dependencies {
+        implementation 'com.esri.arcgisruntime:arcgis-android:100.7.0'
     }
 }

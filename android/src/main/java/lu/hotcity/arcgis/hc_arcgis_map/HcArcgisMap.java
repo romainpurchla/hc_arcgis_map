@@ -24,7 +24,7 @@ public class HcArcgisMap implements PlatformView, MethodCallHandler {
     Context context;
     BinaryMessenger messenger;
     int id;
-    WebView webView;
+    MapView mMapView;
     String url = "";
     MethodChannel channel;
 
@@ -34,14 +34,14 @@ public class HcArcgisMap implements PlatformView, MethodCallHandler {
         this.context = context;
         this.messenger = messenger;
         this.id = id;
-        webView = this.getWebView(context);
+        mMapView = this.setupMap();
         channel = new MethodChannel(messenger, "hc_arcgis_map");
         channel.setMethodCallHandler(this);
     }
 
     @Override
     public View getView() {
-        return webView;
+        return mMapView;
     }
 
     @Override
@@ -49,12 +49,16 @@ public class HcArcgisMap implements PlatformView, MethodCallHandler {
 
     }
 
-    private WebView getWebView(Context context) {
-        WebView webView = new WebView(context);
-        webView.setWebViewClient(new WebViewClient());
-        webView.getSettings().setJavaScriptEnabled(true);
-        return webView;
-    }
+    private void setupMap() {
+        if (mMapView != null) {
+            Basemap.Type basemapType = Basemap.Type.STREETS_VECTOR;
+            double latitude = 34.0270;
+            double longitude = -118.8050;
+            int levelOfDetail = 13;
+            ArcGISMap map = new ArcGISMap(basemapType, latitude, longitude, levelOfDetail);
+            mMapView.setMap(map);
+        }
+      }
 
     @Override
     public void onMethodCall(MethodCall call, MethodChannel.Result result) {
