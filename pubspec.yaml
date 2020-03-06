@@ -1,8 +1,8 @@
 name: hc_arcgis_map
 description: A new flutter plugin project.
 version: 0.0.1
-author: rpurchla@hotcity.lu
-homepage: https://github.com/romainpurchla
+author: PURCHLA Romain<rpurchla@hotcity.lu>
+homepage: https://github.com/romainpurchla/hc_arcgis_map
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
