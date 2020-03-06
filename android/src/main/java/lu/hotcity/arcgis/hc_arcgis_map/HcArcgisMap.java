@@ -9,6 +9,10 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.esri.arcgisruntime.mapping.ArcGISMap;
+import com.esri.arcgisruntime.mapping.Basemap;
+import com.esri.arcgisruntime.mapping.view.MapView;
+
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
@@ -34,7 +38,7 @@ public class HcArcgisMap implements PlatformView, MethodCallHandler {
         this.context = context;
         this.messenger = messenger;
         this.id = id;
-        mMapView = this.setupMap();
+        this.setupMap();
         channel = new MethodChannel(messenger, "hc_arcgis_map");
         channel.setMethodCallHandler(this);
     }
@@ -62,15 +66,7 @@ public class HcArcgisMap implements PlatformView, MethodCallHandler {
 
     @Override
     public void onMethodCall(MethodCall call, MethodChannel.Result result) {
-        switch (call.method) {
-            case "loadUrl":
-                String url = call.arguments.toString();
-                webView.loadUrl(url);
-                break;
-            default:
-                String url2 = "https://www.google.com/";
-                webView.loadUrl(url2);
-        }
+
 
     }
 
