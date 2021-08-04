@@ -1,5 +1,5 @@
 name: hc_arcgis_map
-description: A new flutter plugin project.
+description: This flutter plugin project allows you to implement the ArcGIS Maps into your application. This is better than many other open source maps.
 version: 0.0.5
 author: PURCHLA Romain<rpurchla@hotcity.lu>
 homepage: https://github.com/romainpurchla/hc_arcgis_map
